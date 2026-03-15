@@ -1,221 +1,286 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
-    <title>Next Step | مؤسسة نكست ستيب للقبولات الجامعية</title>
-    <meta name="description" content="نكست ستيب هي شريكك الرسمي لتأمين القبولات الجامعية في تركيا، كازاخستان، مصر والأردن. استشارات مجانية وخصومات حصرية للطلاب العراقيين.">
-    <meta name="keywords" content="دراسة بالخارج، قبولات جامعية، طلاب العراق، دراسة في تركيا، دراسة في كازاخستان">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <title>Next Step | مؤسسة نكست ستيب للقبولات الجامعية الدولية</title>
+    <meta name="description" content="نكست ستيب هي بوابتك الموثوقة للدراسة في الخارج. تأمين قبولات جامعية في تركيا، كازاخستان، مصر، والأردن مع استشارات مجانية وخصومات حصرية للطلاب العراقيين.">
+    <meta name="keywords" content="دراسة في تركيا، قبولات جامعية العراق، نكست ستيب للدراسة، منح دراسية كازاخستان، دراسة الطب في مصر">
+    <meta property="og:title" content="Next Step | طريقك نحو القمة الأكاديمية">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1523050853021-ea35c3f99a9e?q=80&w=800">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
     
     <style>
-        /* نظام الألوان المتطور */
+        /* المتغيرات والأنظمة اللونية (Luxury Tech Palette) */
         :root {
-            --primary: #002347; --accent: #FF6F61; --bg: #F8F9FA; --card: #FFFFFF;
-            --text: #1A1A1A; --text-dim: #555555; --border: rgba(0,0,0,0.08);
-            --shadow: 0 10px 30px rgba(0,0,0,0.05); --radius: 20px;
+            --primary: #002347;
+            --accent: #FF6F61;
+            --bg: #F8F9FA;
+            --card: rgba(255, 255, 255, 0.85);
+            --text: #1A1A1A;
+            --text-dim: #555555;
+            --border: rgba(0, 0, 0, 0.05);
+            --shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+            --radius: 24px;
+            --glass: blur(15px);
         }
 
         body.dark-mode {
-            --primary: #8AB4F8; --bg: #0D1117; --card: #161B22;
-            --text: #E6EDF3; --text-dim: #8B949E; --border: rgba(255,255,255,0.1);
+            --primary: #8AB4F8;
+            --bg: #0B0E14;
+            --card: rgba(22, 27, 34, 0.85);
+            --text: #E6EDF3;
+            --text-dim: #8B949E;
+            --border: rgba(255, 255, 255, 0.08);
+            --shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
         }
 
-        /* الإعدادات العامة */
-        * { box-sizing: border-box; scroll-behavior: smooth; }
-        body { margin: 0; font-family: 'Tajawal', sans-serif; background: var(--bg); color: var(--text); direction: rtl; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        /* الإعدادات العامة (Reset & Typography) */
+        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+        body { font-family: 'Tajawal', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
         body.en-lang { direction: ltr; font-family: 'Inter', sans-serif; }
         .container { width: 92%; max-width: 1200px; margin: auto; }
 
-        /* شاشة التحميل (Preloader) */
-        #loader { position: fixed; inset: 0; background: var(--primary); z-index: 9999; display: flex; justify-content: center; align-items: center; transition: 0.5s; }
-        #loader.hidden { opacity: 0; visibility: hidden; }
+        /* شاشة التحميل التقنية (Preloader) */
+        #preloader { position: fixed; inset: 0; background: var(--primary); z-index: 9999; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.6s; }
+        #preloader.fade-out { opacity: 0; visibility: hidden; }
+        .loader-logo { width: 80px; height: 80px; border: 5px solid var(--accent); border-top-color: transparent; border-radius: 50%; animation: spin 1s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
 
-        /* القائمة العلوية (Glassmorphism) */
+        /* الهيدر الزجاجي الذكي (Smart Sticky Header) */
         header { 
-            background: rgba(var(--card), 0.8); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-            padding: 12px 0; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--border);
+            background: var(--card); backdrop-filter: var(--glass); -webkit-backdrop-filter: var(--glass);
+            padding: 15px 0; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--border);
         }
-        .nav-box { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
+        .header-wrap { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+        .logo { font-size: 1.6rem; font-weight: 900; color: var(--primary); text-decoration: none; letter-spacing: -1px; }
+        
         nav { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
         nav a { 
             text-decoration: none; color: var(--text); font-weight: 700; font-size: 0.85rem; 
-            padding: 10px 16px; border-radius: 12px; background: rgba(0,0,0,0.04); transition: 0.3s;
+            padding: 10px 16px; border-radius: 14px; background: rgba(0,0,0,0.03); transition: 0.3s;
         }
-        nav a:hover { background: var(--accent); color: white !important; transform: translateY(-2px); }
+        body.dark-mode nav a { background: rgba(255,255,255,0.05); }
+        nav a:hover, nav a.active { background: var(--accent); color: white !important; transform: translateY(-2px); }
 
-        /* قسم الترحيب (Hero) */
-        #hero { 
-            padding: 120px 0; text-align: center; 
-            background: linear-gradient(rgba(0,35,71,0.75), rgba(0,35,71,0.75)), url('https://images.unsplash.com/photo-1523050853021-ea35c3f99a9e?q=80&w=1920') center/cover;
-            color: white; border-radius: 0 0 60px 60px; margin-bottom: 50px;
+        /* بطل الصفحة (Hero Section) */
+        .hero { 
+            padding: 140px 0 100px; text-align: center;
+            background: linear-gradient(rgba(0,35,71,0.8), rgba(0,35,71,0.8)), url('https://images.unsplash.com/photo-1523050853021-ea35c3f99a9e?q=80&w=1920') center/cover;
+            color: white; border-radius: 0 0 60px 60px; position: relative;
         }
+        .hero h2 { font-size: clamp(2rem, 5vw, 3.8rem); line-height: 1.2; margin-bottom: 25px; font-weight: 900; }
+        .hero p { font-size: 1.2rem; opacity: 0.9; max-width: 800px; margin: 0 auto 40px; }
 
-        /* الشبكة والبطاقات */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; padding: 40px 0; }
-        .card { 
-            background: var(--card); border-radius: var(--radius); overflow: hidden; 
-            border: 1px solid var(--border); box-shadow: var(--shadow); transition: 0.4s;
-        }
-        .card:hover { transform: translateY(-12px); border-color: var(--accent); }
-        .card img { width: 100%; height: 200px; object-fit: cover; }
-
-        /* الأزرار الفاخرة */
-        .cta-button { 
-            background: var(--accent); color: white; padding: 14px 35px; border-radius: 50px; 
+        /* الأزرار (Legendary Buttons) */
+        .cta-btn { 
+            background: var(--accent); color: white; padding: 18px 45px; border-radius: 50px; 
             border: none; font-weight: 800; cursor: pointer; text-decoration: none; 
-            display: inline-block; transition: 0.3s; box-shadow: 0 10px 20px rgba(255,111,97,0.3);
+            display: inline-block; font-size: 1.1rem; box-shadow: 0 15px 30px rgba(255,111,97,0.4); transition: 0.3s;
         }
-        .cta-button:hover { transform: scale(1.05); box-shadow: 0 15px 30px rgba(255,111,97,0.5); }
+        .cta-btn:hover { transform: scale(1.05) translateY(-5px); box-shadow: 0 20px 40px rgba(255,111,97,0.6); }
 
-        /* نظام اللغات */
+        /* شبكة الوجهات (Destination Grid) */
+        .section-title { text-align: center; margin: 80px 0 40px; }
+        .section-title h2 { font-size: 2.2rem; color: var(--primary); position: relative; display: inline-block; }
+        .section-title h2::after { content: ''; position: absolute; bottom: -10px; right: 0; width: 50px; height: 4px; background: var(--accent); border-radius: 2px; }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; padding: 20px 0; }
+        .country-card { 
+            background: var(--card); border-radius: var(--radius); overflow: hidden; 
+            border: 1px solid var(--border); box-shadow: var(--shadow); transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .country-card:hover { transform: translateY(-15px); border-color: var(--accent); }
+        .card-img { width: 100%; height: 220px; object-fit: cover; transition: 0.5s; }
+        .country-card:hover .card-img { transform: scale(1.1); }
+        .card-body { padding: 30px; }
+        .card-body h3 { margin-bottom: 15px; display: flex; align-items: center; gap: 10px; color: var(--primary); }
+        .uni-list { list-style: none; margin-top: 15px; }
+        .uni-list li { font-size: 0.88rem; color: var(--text-dim); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+        .uni-list li i { color: var(--accent); font-size: 12px; }
+
+        /* واتساب العائم (Smart WhatsApp) */
+        .whatsapp-float {
+            position: fixed; bottom: 30px; left: 30px; background: #25d366; color: white;
+            width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center;
+            justify-content: center; font-size: 32px; z-index: 2000; box-shadow: 0 15px 35px rgba(37,211,102,0.4);
+            animation: pulse 2s infinite; text-decoration: none;
+        }
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.7); } 70% { box-shadow: 0 0 0 20px rgba(37,211,102,0); } 100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); } }
+
+        /* إخفاء اللغات برمجياً */
         .lang-en { display: none; }
         body.en-lang .lang-en { display: inline-block; }
         body.en-lang .lang-ar { display: none; }
 
-        /* واتساب العائم */
-        .whatsapp-float {
-            position: fixed; bottom: 30px; left: 30px; background: #25d366; color: white;
-            width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center;
-            justify-content: center; font-size: 35px; z-index: 1000; box-shadow: 0 15px 30px rgba(37,211,102,0.4);
-            animation: pulse 2s infinite;
+        @media (max-width: 768px) {
+            .header-wrap { flex-direction: column; padding: 10px; }
+            .hero h2 { font-size: 2.2rem; }
         }
-
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
     </style>
 </head>
 <body>
 
-<div id="loader">
-    <h1 style="color: white; font-family: 'Tajawal';">Next Step...</h1>
+<div id="preloader">
+    <div class="loader-logo"></div>
+    <h2 style="color: white; margin-top: 20px; font-weight: 800;">Next Step</h2>
 </div>
 
 <header>
     <div class="container">
-        <div class="nav-box">
-            <h1 style="margin:0; font-size: 1.5rem; color: var(--primary); font-weight: 900;">Next Step</h1>
+        <div class="header-wrap">
+            <a href="index.html" class="logo">Next Step</a>
             <nav>
-                <a href="#hero"><i class="fas fa-home"></i> <span class="lang-ar">الرئيسية</span><span class="lang-en">Home</span></a>
-                <a href="#destinations"><i class="fas fa-globe"></i> <span class="lang-ar">الوجهات</span><span class="lang-en">Countries</span></a>
-                <a href="#programs"><i class="fas fa-book"></i> <span class="lang-ar">البرامج</span><span class="lang-en">Majors</span></a>
-                <div style="display:flex; gap:5px; margin-right: 10px;">
-                    <button onclick="toggleDarkMode()" style="border:none; background:var(--primary); color:white; cursor:pointer; padding:8px 12px; border-radius:10px;"><i class="fas fa-moon"></i></button>
-                    <button onclick="toggleLanguage()" style="border:none; background:var(--primary); color:white; cursor:pointer; padding:8px 12px; border-radius:10px; font-weight:bold;">EN/AR</button>
+                <a href="index.html" class="active"><span class="lang-ar">الرئيسية</span><span class="lang-en">Home</span></a>
+                <a href="programs.html"><span class="lang-ar">البرامج</span><span class="lang-en">Programs</span></a>
+                <a href="steps.html"><span class="lang-ar">الخطوات</span><span class="lang-en">Steps</span></a>
+                <a href="faq.html"><span class="lang-ar">الأسئلة</span><span class="lang-en">FAQ</span></a>
+                <a href="why.html"><span class="lang-ar">لماذا نحن؟</span><span class="lang-en">Why Us?</span></a>
+                <div style="display: flex; gap: 5px; margin-right: 15px;">
+                    <button onclick="toggleDarkMode()" style="cursor:pointer; border:none; background:var(--primary); color:white; width:35px; height:35px; border-radius:10px;"><i class="fas fa-moon" id="theme-icon"></i></button>
+                    <button onclick="toggleLanguage()" style="cursor:pointer; border:none; background:var(--primary); color:white; padding:0 10px; border-radius:10px; font-weight:bold;">EN/AR</button>
                 </div>
             </nav>
         </div>
     </div>
 </header>
 
-<section id="hero">
+<section class="hero">
     <div class="container">
-        <h2 style="font-size: 3.5rem; margin-bottom: 20px;">
-            <span class="lang-ar">صمم مستقبلك الأكاديمي</span>
-            <span class="lang-en">Design Your Academic Future</span>
+        <h2>
+            <span class="lang-ar">طموحك يتجاوز الحدود،<br>ونحن جسرك للوصول.</span>
+            <span class="lang-en">Your Ambition Knows No Borders,<br>We Are Your Bridge.</span>
         </h2>
-        <p style="font-size: 1.2rem; opacity: 0.9; max-width: 800px; margin: 0 auto 40px auto;">
-            <span class="lang-ar">شريكك المعتمد للقبولات الجامعية في تركيا، كازاخستان، مصر، والأردن بخصومات تصل إلى 50%.</span>
-            <span class="lang-en">Your certified partner for admissions in Turkey, Kazakhstan, Egypt, and Jordan with up to 50% discounts.</span>
+        <p>
+            <span class="lang-ar">المؤسسة الأولى في بغداد لتأمين القبولات الجامعية في تركيا، كازاخستان، مصر، والأردن بخصومات رسمية وحصرية.</span>
+            <span class="lang-en">The leading institution in Baghdad for university admissions in Turkey, Kazakhstan, Egypt, and Jordan with exclusive discounts.</span>
         </p>
-        <button onclick="sendWA('استشارة عامة')" class="cta-button">
-            <span class="lang-ar">ابدأ استشارتك المجانية</span>
-            <span class="lang-en">Start Your Free Consultation</span>
+        <button onclick="sendWA('استشارة مجانية من الرئيسية')" class="cta-btn">
+            <span class="lang-ar">ابدأ رحلتك مجاناً</span>
+            <span class="lang-en">Start Your Journey Free</span>
         </button>
     </div>
 </section>
 
-<div class="container" style="margin-top: -80px; position: relative; z-index: 5;">
-    <div class="grid" style="grid-template-columns: repeat(3, 1fr); gap: 15px; text-align: center;">
-        <div class="card" style="padding: 20px; border-bottom: 4px solid var(--accent);">
-            <h3 style="margin:0; color:var(--accent);">500+</h3>
-            <p style="margin:0; font-size: 0.8rem;"><span class="lang-ar">طالب مقبول</span><span class="lang-en">Accepted Students</span></p>
-        </div>
-        <div class="card" style="padding: 20px; border-bottom: 4px solid var(--accent);">
-            <h3 style="margin:0; color:var(--accent);">50+</h3>
-            <p style="margin:0; font-size: 0.8rem;"><span class="lang-ar">جامعة شريكة</span><span class="lang-en">Partner Universities</span></p>
-        </div>
-        <div class="card" style="padding: 20px; border-bottom: 4px solid var(--accent);">
-            <h3 style="margin:0; color:var(--accent);">100%</h3>
-            <p style="margin:0; font-size: 0.8rem;"><span class="lang-ar">قبول مضمون</span><span class="lang-en">Guaranteed Admission</span></p>
-        </div>
-    </div>
-</div>
-
 <div class="container" id="destinations">
-    <div style="text-align: center; margin: 60px 0 20px 0;">
-        <h2><span class="lang-ar">وجهاتنا الدراسية</span><span class="lang-en">Study Destinations</span></h2>
+    <div class="section-title">
+        <h2><span class="lang-ar">وجهاتنا والجامعات الشريكة</span><span class="lang-en">Destinations & Partners</span></h2>
     </div>
+
     <div class="grid">
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?q=80&w=800" alt="Turkey">
-            <div style="padding:25px;">
-                <h3 style="color:var(--primary);"><span class="lang-ar">تركيا</span><span class="lang-en">Turkey</span></h3>
-                <p style="font-size: 0.9rem; color:var(--text-dim);"><span class="lang-ar">الجامعات الأقوى عالمياً مع نظام منح متطور.</span><span class="lang-en">The world's strongest universities with advanced scholarships.</span></p>
-                <button onclick="sendWA('الدراسة في تركيا')" class="cta-button" style="width:100%; padding: 10px;"><span class="lang-ar">عرض الجامعات</span><span class="lang-en">View Universities</span></button>
+        <div class="country-card">
+            <img src="https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?q=80&w=800" class="card-img" alt="Turkey">
+            <div class="card-body">
+                <h3><i class="fas fa-university"></i> <span class="lang-ar">تركيا</span><span class="lang-en">Turkey</span></h3>
+                <ul class="uni-list">
+                    <li><i class="fas fa-check-circle"></i> <span class="lang-ar">جامعة إسطنبول ميديپول</span><span class="lang-en">Istanbul Medipol University</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span class="lang-ar">جامعة بهتشه شهير</span><span class="lang-en">Bahçeşehir University</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span class="lang-ar">جامعة إستينيا</span><span class="lang-en">Istinye University</span></li>
+                </ul>
+                <button onclick="sendWA('استفسار عن تركيا')" class="cta-btn" style="width:100%; margin-top:20px; font-size: 0.9rem; padding: 12px;"><span class="lang-ar">التفاصيل والخصومات</span><span class="lang-en">Details & Discounts</span></button>
             </div>
         </div>
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?q=80&w=800" alt="Kazakhstan">
-            <div style="padding:25px;">
-                <h3 style="color:var(--primary);"><span class="lang-ar">كازاخستان</span><span class="lang-en">Kazakhstan</span></h3>
-                <p style="font-size: 0.9rem; color:var(--text-dim);"><span class="lang-ar">دراسة الطب والهندسة بتكاليف تنافسية جداً.</span><span class="lang-en">Study medicine and engineering at very competitive costs.</span></p>
-                <button onclick="sendWA('الدراسة في كازاخستان')" class="cta-button" style="width:100%; padding: 10px;"><span class="lang-ar">عرض الجامعات</span><span class="lang-en">View Universities</span></button>
+
+        <div class="country-card">
+            <img src="https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?q=80&w=800" class="card-img" alt="Kazakhstan">
+            <div class="card-body">
+                <h3><i class="fas fa-globe-asia"></i> <span class="lang-ar">كازاخستان</span><span class="lang-en">Kazakhstan</span></h3>
+                <ul class="uni-list">
+                    <li><i class="fas fa-check-circle"></i> <span class="lang-ar">جامعة SDU</span><span class="lang-en">SDU University</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span class="lang-ar">جامعة توران</span><span class="lang-en">Turan University</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span class="lang-ar">جامعة KIMEP</span><span class="lang-en">KIMEP University</span></li>
+                </ul>
+                <button onclick="sendWA('استفسار عن كازاخستان')" class="cta-btn" style="width:100%; margin-top:20px; font-size: 0.9rem; padding: 12px;"><span class="lang-ar">التفاصيل والخصومات</span><span class="lang-en">Details & Discounts</span></button>
+            </div>
+        </div>
+        
+        <div class="country-card">
+            <img src="https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?q=80&w=800" class="card-img" alt="Egypt">
+            <div class="card-body">
+                <h3><i class="fas fa-pyramids"></i> <span class="lang-ar">مصر</span><span class="lang-en">Egypt</span></h3>
+                <ul class="uni-list">
+                    <li><i class="fas fa-check-circle"></i> <span class="lang-ar">جامعة الجيزة الجديدة</span><span class="lang-en">New Giza University</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span class="lang-ar">جامعة المستقبل</span><span class="lang-en">Future University</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span class="lang-ar">الجامعة البريطانية</span><span class="lang-en">British University</span></li>
+                </ul>
+                <button onclick="sendWA('استفسار عن مصر')" class="cta-btn" style="width:100%; margin-top:20px; font-size: 0.9rem; padding: 12px;"><span class="lang-ar">التفاصيل والخصومات</span><span class="lang-en">Details & Discounts</span></button>
+            </div>
+        </div>
+
+        <div class="country-card">
+            <img src="https://images.unsplash.com/photo-1547234935-80c7145ec969?q=80&w=800" class="card-img" alt="Jordan">
+            <div class="card-body">
+                <h3><i class="fas fa-map-marked-alt"></i> <span class="lang-ar">الأردن</span><span class="lang-en">Jordan</span></h3>
+                <ul class="uni-list">
+                    <li><i class="fas fa-check-circle"></i> <span class="lang-ar">جامعة إربد الأهلية</span><span class="lang-en">Irbid National University</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span class="lang-ar">الجامعة الأمريكية</span><span class="lang-en">American University</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span class="lang-ar">جامعة البتراء</span><span class="lang-en">University of Petra</span></li>
+                </ul>
+                <button onclick="sendWA('استفسار عن الأردن')" class="cta-btn" style="width:100%; margin-top:20px; font-size: 0.9rem; padding: 12px;"><span class="lang-ar">التفاصيل والخصومات</span><span class="lang-en">Details & Discounts</span></button>
             </div>
         </div>
     </div>
 </div>
 
-<footer style="padding: 60px 0 20px 0; text-align: center; background: var(--card); margin-top: 50px; border-top: 1px solid var(--border);">
-    <div class="container">
-        <h3 style="color:var(--primary);">Next Step Education</h3>
-        <p style="font-size: 0.9rem; opacity: 0.7;">&copy; 2026 Next Step. All Rights Reserved.</p>
-    </div>
-</footer>
-
-<a href="javascript:void(0)" onclick="sendWA('استفسار من الموقع الرئيسي')" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
+<a href="javascript:void(0)" onclick="sendWA('مرحباً نكست ستيب')" class="whatsapp-float">
+    <i class="fab fa-whatsapp"></i>
+</a>
 
 <script src="https://unpkg.com/scrollreveal"></script>
 <script>
-    // 1. نظام شاشة التحميل
-    window.onload = () => { document.getElementById('loader').classList.add('hidden'); };
+    // 1. نظام شاشة التحميل (Preloader)
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            document.getElementById('preloader').classList.add('fade-out');
+        }, 800);
+    });
 
     // 2. المحرك الذكي (اللغة والمظهر والوقت)
-    (function init() {
+    (function smartInit() {
         const hour = new Date().getHours();
         const isNight = hour >= 18 || hour < 6;
         const deviceLangEn = !navigator.language.startsWith('ar');
 
-        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && isNight)) 
+        // تطبيق الوضع الليلي التلقائي
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && isNight)) {
             document.body.classList.add('dark-mode');
-        
-        if (localStorage.getItem('lang') === 'en' || (!localStorage.getItem('lang') && deviceLangEn)) 
+            document.getElementById('theme-icon').className = 'fas fa-sun';
+        }
+
+        // تطبيق اللغة التلقائية
+        if (localStorage.getItem('lang') === 'en' || (!localStorage.getItem('lang') && deviceLangEn)) {
             document.body.classList.add('en-lang');
+            document.documentElement.dir = 'ltr';
+            document.documentElement.lang = 'en';
+        }
     })();
 
     function toggleDarkMode() {
         document.body.classList.toggle('dark-mode');
-        localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+        const isDark = document.body.classList.contains('dark-mode');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        document.getElementById('theme-icon').className = isDark ? 'fas fa-sun' : 'fas fa-moon';
     }
 
     function toggleLanguage() {
-        document.body.classList.toggle('en-lang');
-        localStorage.setItem('lang', document.body.classList.contains('en-lang') ? 'en' : 'ar');
-        location.reload();
+        const isEn = document.body.classList.toggle('en-lang');
+        localStorage.setItem('lang', isEn ? 'en' : 'ar');
+        location.reload(); // إعادة التحميل لضبط الاتجاهات والخطوط
     }
 
     function sendWA(context) {
         const phone = "9647835535363";
-        let msg = document.body.classList.contains('en-lang') 
-            ? `Hello Next Step, I am interested in: ${context}`
-            : `مرحباً نكست ستيب، أنا مهتم بـ: ${context}`;
+        const isEn = document.body.classList.contains('en-lang');
+        const msg = isEn ? `Hello Next Step, I need information about: ${context}` : `مرحباً نكست ستيب، أريد استفسار عن: ${context}`;
         window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
     }
 
-    // 3. حركات الظهور الاحترافية
-    ScrollReveal().reveal('.card', { delay: 300, distance: '50px', origin: 'bottom', interval: 100 });
+    // 3. حركات الظهور الاحترافية (Animations)
+    ScrollReveal().reveal('.hero h2, .hero p, .hero .cta-btn', { delay: 1000, distance: '50px', origin: 'bottom', interval: 200 });
+    ScrollReveal().reveal('.country-card', { delay: 300, distance: '60px', origin: 'bottom', interval: 150 });
 </script>
 
 </body>

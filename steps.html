@@ -1,86 +1,98 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>خطوات التقديم | Next Step Roadmap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>خارطة طريق النجاح | Next Step Roadmap</title>
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
     
     <style>
-        /* التنسيقات الأساسية المتوافقة */
+        /* التوافق مع الثيم الأسطوري */
         :root {
-            --primary: #002347; --accent: #FF6F61; --bg: #F8F9FA; --card: #FFFFFF;
-            --text: #1A1A1A; --text-dim: #555555; --border: rgba(0,0,0,0.08);
-            --shadow: 0 10px 30px rgba(0,0,0,0.05); --radius: 20px;
+            --primary: #002347; --accent: #FF6F61; --bg: #F8F9FA; --card: rgba(255, 255, 255, 0.9);
+            --text: #1A1A1A; --text-dim: #555555; --border: rgba(0, 0, 0, 0.05);
+            --shadow: 0 15px 35px rgba(0, 0, 0, 0.05); --radius: 24px;
         }
 
         body.dark-mode {
-            --primary: #8AB4F8; --bg: #0D1117; --card: #161B22;
-            --text: #E6EDF3; --text-dim: #8B949E; --border: rgba(255,255,255,0.1);
+            --primary: #8AB4F8; --bg: #0B0E14; --card: rgba(22, 27, 34, 0.9);
+            --text: #E6EDF3; --text-dim: #8B949E; --border: rgba(255, 255, 255, 0.08);
         }
 
-        * { box-sizing: border-box; scroll-behavior: smooth; }
-        body { margin: 0; font-family: 'Tajawal', sans-serif; background: var(--bg); color: var(--text); direction: rtl; transition: 0.4s; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Tajawal', sans-serif; background: var(--bg); color: var(--text); transition: 0.5s; overflow-x: hidden; }
         body.en-lang { direction: ltr; font-family: 'Inter', sans-serif; }
-        .container { width: 92%; max-width: 800px; margin: auto; }
+        .container { width: 92%; max-width: 900px; margin: auto; }
 
-        /* الهيدر */
+        /* الهيدر الزجاجي الموحد */
         header { 
-            background: var(--card); backdrop-filter: blur(15px); padding: 12px 0; 
-            position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--border);
+            background: var(--card); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            padding: 15px 0; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--border);
         }
-        .nav-box { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
-        nav { display: flex; gap: 8px; }
+        .header-wrap { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+        .logo { font-size: 1.6rem; font-weight: 900; color: var(--primary); text-decoration: none; }
+        
+        nav { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
         nav a { 
             text-decoration: none; color: var(--text); font-weight: 700; font-size: 0.85rem; 
-            padding: 10px 16px; border-radius: 12px; background: rgba(0,0,0,0.04); transition: 0.3s;
+            padding: 10px 16px; border-radius: 14px; background: rgba(0,0,0,0.03); transition: 0.3s;
         }
-        nav a:hover { background: var(--accent); color: white !important; }
+        nav a:hover, nav a.active { background: var(--accent); color: white !important; }
 
         /* بنر الصفحة */
         .page-banner {
             padding: 80px 0; text-align: center;
-            background: linear-gradient(rgba(0,35,71,0.85), rgba(0,35,71,0.85)), url('https://images.unsplash.com/photo-1454165833767-13143895996b?q=80&w=1920') center/cover;
-            color: white; border-radius: 0 0 50px 50px; margin-bottom: 50px;
+            background: linear-gradient(rgba(0,35,71,0.9), rgba(0,35,71,0.9)), url('https://images.unsplash.com/photo-1454165833767-13143895996b?q=80&w=1920') center/cover;
+            color: white; border-radius: 0 0 50px 50px; margin-bottom: 60px;
         }
 
-        /* تصميم التايم لاين (Timeline) */
-        .timeline { position: relative; border-right: 3px solid var(--accent); padding: 20px 0; margin-right: 20px; }
-        body.en-lang .timeline { border-right: none; border-left: 3px solid var(--accent); margin-right: 0; margin-left: 20px; }
+        /* نظام التايم لاين الأسطوري (Timeline) */
+        .timeline { position: relative; padding: 20px 0; }
+        .timeline::before { 
+            content: ''; position: absolute; top: 0; right: 20px; width: 4px; height: 100%; 
+            background: linear-gradient(to bottom, var(--accent), var(--primary)); 
+            border-radius: 2px; box-shadow: 0 0 15px var(--accent);
+        }
+        body.en-lang .timeline::before { right: auto; left: 20px; }
 
-        .step-item { position: relative; margin-bottom: 50px; padding-right: 40px; }
-        body.en-lang .step-item { padding-right: 0; padding-left: 40px; }
+        .step-item { position: relative; margin-bottom: 60px; padding-right: 60px; }
+        body.en-lang .step-item { padding-right: 0; padding-left: 60px; }
 
         .step-dot { 
-            position: absolute; right: -12px; top: 0; width: 22px; height: 22px; 
-            background: var(--accent); border-radius: 50%; border: 4px solid var(--bg); z-index: 10;
+            position: absolute; right: 11px; top: 0; width: 22px; height: 22px; 
+            background: var(--accent); border-radius: 50%; border: 4px solid var(--bg); 
+            z-index: 10; box-shadow: 0 0 10px var(--accent);
         }
-        body.en-lang .step-dot { right: auto; left: -12px; }
+        body.en-lang .step-dot { right: auto; left: 11px; }
 
         .step-card { 
-            background: var(--card); border-radius: var(--radius); padding: 25px; 
-            box-shadow: var(--shadow); border: 1px solid var(--border); transition: 0.3s;
+            background: var(--card); border-radius: var(--radius); padding: 30px; 
+            box-shadow: var(--shadow); border: 1px solid var(--border); transition: 0.4s;
         }
-        .step-card:hover { transform: scale(1.02); border-color: var(--accent); }
+        .step-card:hover { transform: translateX(-10px); border-color: var(--accent); }
+        body.en-lang .step-card:hover { transform: translateX(10px); }
 
-        .step-number { 
-            background: var(--primary); color: white; width: 30px; height: 30px; 
+        .step-header { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
+        .step-num { 
+            background: var(--primary); color: white; width: 35px; height: 35px; 
             border-radius: 50%; display: flex; align-items: center; justify-content: center; 
-            font-weight: 800; font-size: 0.8rem; margin-bottom: 15px;
+            font-weight: 900; font-size: 1rem;
         }
-
-        .cta-button { 
-            background: var(--accent); color: white; padding: 15px 40px; border-radius: 50px; 
-            border: none; font-weight: 800; cursor: pointer; text-decoration: none; 
-            display: inline-block; transition: 0.3s;
-        }
+        .step-icon { font-size: 1.5rem; color: var(--accent); }
 
         /* لغات */
         .lang-en { display: none; }
         body.en-lang .lang-en { display: inline-block; }
         body.en-lang .lang-ar { display: none; }
+
+        .cta-btn { 
+            background: var(--accent); color: white; padding: 15px 45px; border-radius: 50px; 
+            border: none; font-weight: 800; cursor: pointer; text-decoration: none; 
+            display: inline-block; transition: 0.3s;
+        }
+        .cta-btn:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(255,111,97,0.4); }
 
         .whatsapp-float {
             position: fixed; bottom: 30px; left: 30px; background: #25d366; color: white;
@@ -93,14 +105,17 @@
 
 <header>
     <div class="container">
-        <div class="nav-box">
-            <h1 style="margin:0; font-size: 1.4rem; color: var(--primary); font-weight: 900;">Next Step</h1>
+        <div class="header-wrap">
+            <a href="index.html" class="logo">Next Step</a>
             <nav>
-                <a href="index.html"><i class="fas fa-home"></i> <span class="lang-ar">الرئيسية</span><span class="lang-en">Home</span></a>
-                <a href="steps.html" style="background: var(--accent); color: white;"><i class="fas fa-route"></i> <span class="lang-ar">الخطوات</span><span class="lang-en">Steps</span></a>
-                <div style="display:flex; gap:5px; margin-right: 10px;">
-                    <button onclick="toggleDarkMode()" style="border:none; background:var(--primary); color:white; cursor:pointer; padding:8px 12px; border-radius:10px;"><i class="fas fa-moon"></i></button>
-                    <button onclick="toggleLanguage()" style="border:none; background:var(--primary); color:white; cursor:pointer; padding:8px 12px; border-radius:10px; font-weight:bold;">EN/AR</button>
+                <a href="index.html"><span class="lang-ar">الرئيسية</span><span class="lang-en">Home</span></a>
+                <a href="programs.html"><span class="lang-ar">البرامج</span><span class="lang-en">Programs</span></a>
+                <a href="steps.html" class="active"><span class="lang-ar">الخطوات</span><span class="lang-en">Steps</span></a>
+                <a href="faq.html"><span class="lang-ar">الأسئلة</span><span class="lang-en">FAQ</span></a>
+                <a href="why.html"><span class="lang-ar">لماذا نحن؟</span><span class="lang-en">Why Us?</span></a>
+                <div style="display: flex; gap: 5px; margin-right: 10px;">
+                    <button onclick="toggleDarkMode()" style="cursor:pointer; border:none; background:var(--primary); color:white; width:35px; height:35px; border-radius:10px;"><i class="fas fa-moon" id="theme-icon"></i></button>
+                    <button onclick="toggleLanguage()" style="cursor:pointer; border:none; background:var(--primary); color:white; padding:0 8px; border-radius:10px; font-weight:bold; font-size:11px;">EN/AR</button>
                 </div>
             </nav>
         </div>
@@ -109,8 +124,14 @@
 
 <section class="page-banner">
     <div class="container">
-        <h2 style="font-size: 2.5rem;"><span class="lang-ar">خارطة طريق القبول</span><span class="lang-en">Admission Roadmap</span></h2>
-        <p style="opacity: 0.9;"><span class="lang-ar">6 خطوات بسيطة تفصلك عن مقعدك الدراسي في الخارج</span><span class="lang-en">6 simple steps separating you from your seat abroad</span></p>
+        <h2>
+            <span class="lang-ar">رحلتك الأكاديمية تبدأ هنا</span>
+            <span class="lang-en">Your Academic Journey Starts Here</span>
+        </h2>
+        <p style="opacity: 0.9;">
+            <span class="lang-ar">6 خطوات مدروسة تضمن لك الوصول إلى مقعدك الجامعي بكل سهولة.</span>
+            <span class="lang-en">6 calculated steps to ensure you reach your university seat with ease.</span>
+        </p>
     </div>
 </section>
 
@@ -120,11 +141,14 @@
         <div class="step-item">
             <div class="step-dot"></div>
             <div class="step-card">
-                <div class="step-number">1</div>
-                <h3 style="margin-top:0; color:var(--primary);"><span class="lang-ar">الاستشارة والتقييم</span><span class="lang-en">Consultation & Assessment</span></h3>
-                <p style="color:var(--text-dim); font-size: 0.95rem;">
-                    <span class="lang-ar">نجلس معك لتقييم معدلك واهتماماتك واختيار الوجهة الأنسب لميزانيتك.</span>
-                    <span class="lang-en">We sit with you to assess your GPA and interests to choose the best destination for your budget.</span>
+                <div class="step-header">
+                    <div class="step-num">1</div>
+                    <i class="fas fa-comments step-icon"></i>
+                    <h3 style="color:var(--primary);"><span class="lang-ar">الاستشارة المجانية</span><span class="lang-en">Free Consultation</span></h3>
+                </div>
+                <p style="color:var(--text-dim); line-height: 1.7;">
+                    <span class="lang-ar">نجلس معك لنفهم طموحك، ونقدم لك أفضل الخيارات التي تناسب معدلك وميزانيتك.</span>
+                    <span class="lang-en">We sit with you to understand your ambition and offer the best options for your GPA and budget.</span>
                 </p>
             </div>
         </div>
@@ -132,11 +156,14 @@
         <div class="step-item">
             <div class="step-dot"></div>
             <div class="step-card">
-                <div class="step-number">2</div>
-                <h3 style="margin-top:0; color:var(--primary);"><span class="lang-ar">تجهيز المستندات</span><span class="lang-en">Document Preparation</span></h3>
-                <p style="color:var(--text-dim); font-size: 0.95rem;">
-                    <span class="lang-ar">نساعدك في ترجمة وتصديق الأوراق المطلوبة (جواز السفر، الشهادات) بشكل رسمي.</span>
-                    <span class="lang-en">We help you translate and certify the required documents (passport, certificates) officially.</span>
+                <div class="step-header">
+                    <div class="step-num">2</div>
+                    <i class="fas fa-file-signature step-icon"></i>
+                    <h3 style="color:var(--primary);"><span class="lang-ar">تجهيز المستندات</span><span class="lang-en">Documents Prep</span></h3>
+                </div>
+                <p style="color:var(--text-dim); line-height: 1.7;">
+                    <span class="lang-ar">نساعدك في ترجمة وتصديق كافة الوثائق المطلوبة لضمان ملف تقديم خالي من الأخطاء.</span>
+                    <span class="lang-en">We help translate and certify all required documents to ensure an error-free application.</span>
                 </p>
             </div>
         </div>
@@ -144,11 +171,14 @@
         <div class="step-item">
             <div class="step-dot"></div>
             <div class="step-card">
-                <div class="step-number">3</div>
-                <h3 style="margin-top:0; color:var(--primary);"><span class="lang-ar">التقديم الرسمي</span><span class="lang-en">Official Application</span></h3>
-                <p style="color:var(--text-dim); font-size: 0.95rem;">
-                    <span class="lang-ar">يقوم فريقنا بتقديم طلبك مباشرة في نظام الجامعة ومتابعته لحظة بلحظة.</span>
-                    <span class="lang-en">Our team submits your application directly to the university system and tracks it 24/7.</span>
+                <div class="step-header">
+                    <div class="step-num">3</div>
+                    <i class="fas fa-paper-plane step-icon"></i>
+                    <h3 style="color:var(--primary);"><span class="lang-ar">التقديم الرسمي</span><span class="lang-en">Official Application</span></h3>
+                </div>
+                <p style="color:var(--text-dim); line-height: 1.7;">
+                    <span class="lang-ar">نقوم بإرسال طلبك مباشرة للنظام الجامعي ومتابعته يومياً حتى صدور القبول المبدئي.</span>
+                    <span class="lang-en">We submit your application directly to the university and track it daily for initial admission.</span>
                 </p>
             </div>
         </div>
@@ -156,11 +186,14 @@
         <div class="step-item">
             <div class="step-dot"></div>
             <div class="step-card">
-                <div class="step-number">4</div>
-                <h3 style="margin-top:0; color:var(--primary);"><span class="lang-ar">صدور القبول الجامعي</span><span class="lang-en">Receiving University Admission</span></h3>
-                <p style="color:var(--text-dim); font-size: 0.95rem;">
-                    <span class="lang-ar">مبروك! استلام نسخة القبول الرسمي وبدء إجراءات تثبيت المقعد.</span>
-                    <span class="lang-en">Congratulations! Receiving the official admission copy and starting seat registration.</span>
+                <div class="step-header">
+                    <div class="step-num">4</div>
+                    <i class="fas fa-award step-icon"></i>
+                    <h3 style="color:var(--primary);"><span class="lang-ar">صدور القبول والمنحة</span><span class="lang-en">Admission & Scholarship</span></h3>
+                </div>
+                <p style="color:var(--text-dim); line-height: 1.7;">
+                    <span class="lang-ar">مبروك! استلام نسخة القبول الرسمي وتثبيت الخصومات والمنح الجزئية الخاصة بك.</span>
+                    <span class="lang-en">Congratulations! Receive official admission and confirm your exclusive discounts.</span>
                 </p>
             </div>
         </div>
@@ -168,11 +201,14 @@
         <div class="step-item">
             <div class="step-dot"></div>
             <div class="step-card">
-                <div class="step-number">5</div>
-                <h3 style="margin-top:0; color:var(--primary);"><span class="lang-ar">تأمين السكن والفيزا</span><span class="lang-en">Housing & Visa Support</span></h3>
-                <p style="color:var(--text-dim); font-size: 0.95rem;">
-                    <span class="lang-ar">نرافقك في إجراءات الحصول على السكن الطلابي وتقديم ملف الفيزا.</span>
-                    <span class="lang-en">We accompany you in obtaining student housing and submitting the visa file.</span>
+                <div class="step-header">
+                    <div class="step-num">5</div>
+                    <i class="fas fa-hotel step-icon"></i>
+                    <h3 style="color:var(--primary);"><span class="lang-ar">تأمين السكن والفيزا</span><span class="lang-en">Housing & Visa</span></h3>
+                </div>
+                <p style="color:var(--text-dim); line-height: 1.7;">
+                    <span class="lang-ar">نرافقك في إجراءات حجز السكن الطلابي المناسب وتجهيز ملف التأشيرة (الفيزا).</span>
+                    <span class="lang-en">We assist you in booking student housing and preparing the visa application file.</span>
                 </p>
             </div>
         </div>
@@ -180,19 +216,23 @@
         <div class="step-item">
             <div class="step-dot"></div>
             <div class="step-card">
-                <div class="step-number">6</div>
-                <h3 style="margin-top:0; color:var(--primary);"><span class="lang-ar">السفر والالتحاق</span><span class="lang-en">Travel & Enrollment</span></h3>
-                <p style="color:var(--text-dim); font-size: 0.95rem;">
-                    <span class="lang-ar">الوصول للجامعة وبدء رحلتك الأكاديمية الجديدة مع دعم مستمر منا.</span>
-                    <span class="lang-en">Arriving at the university and starting your new academic journey with our continuous support.</span>
+                <div class="step-header">
+                    <div class="step-num">6</div>
+                    <i class="fas fa-plane-arrival step-icon"></i>
+                    <h3 style="color:var(--primary);"><span class="lang-ar">السفر والالتحاق</span><span class="lang-en">Travel & Enrollment</span></h3>
+                </div>
+                <p style="color:var(--text-dim); line-height: 1.7;">
+                    <span class="lang-ar">الوصول إلى وجهتك وبدء حياتك الجامعية الجديدة مع دعم مستمر من فريقنا هناك.</span>
+                    <span class="lang-en">Arrive at your destination and start your university life with our continuous support.</span>
                 </p>
             </div>
         </div>
 
     </div>
 
-    <div style="text-align: center; margin: 40px 0 80px 0;">
-        <button onclick="sendWA('البدء بالخطوة الأولى')" class="cta-button">
+    <div style="text-align: center; margin: 40px 0 80px;">
+        <h3 style="margin-bottom: 20px;"><span class="lang-ar">هل أنت مستعد للبدء؟</span><span class="lang-en">Are you ready to start?</span></h3>
+        <button onclick="sendWA('أريد البدء بالخطوة الأولى للتقديم')" class="cta-btn">
             <span class="lang-ar">ابدأ الخطوة الأولى الآن</span>
             <span class="lang-en">Start Step 1 Now</span>
         </button>
@@ -200,42 +240,47 @@
 </div>
 
 <footer style="padding: 40px 0; text-align: center; background: var(--card); border-top: 1px solid var(--border);">
-    <div class="container">
-        <p style="font-size: 0.9rem; opacity: 0.7;">&copy; 2026 Next Step Education. All Rights Reserved.</p>
-    </div>
+    <p style="opacity: 0.6; font-size: 0.9rem;">&copy; 2026 Next Step Education. All Rights Reserved.</p>
 </footer>
 
-<a href="javascript:void(0)" onclick="sendWA('استفسار عن الخطوات')" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
+<a href="javascript:void(0)" onclick="sendWA('استفسار عن خطوات التقديم')" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
 
 <script src="https://unpkg.com/scrollreveal"></script>
 <script>
-    // 1. إدارة الإعدادات الذكية
-    (function init() {
-        if (localStorage.getItem('theme') === 'dark') document.body.classList.add('dark-mode');
-        if (localStorage.getItem('lang') === 'en') document.body.classList.add('en-lang');
+    // 1. المحرك الذكي
+    (function smartInit() {
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+            document.getElementById('theme-icon').className = 'fas fa-sun';
+        }
+        if (localStorage.getItem('lang') === 'en') {
+            document.body.classList.add('en-lang');
+            document.documentElement.dir = 'ltr';
+        }
     })();
 
     function toggleDarkMode() {
         document.body.classList.toggle('dark-mode');
-        localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+        const isDark = document.body.classList.contains('dark-mode');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        document.getElementById('theme-icon').className = isDark ? 'fas fa-sun' : 'fas fa-moon';
     }
 
     function toggleLanguage() {
-        document.body.classList.toggle('en-lang');
-        localStorage.setItem('lang', document.body.classList.contains('en-lang') ? 'en' : 'ar');
+        const isEn = document.body.classList.toggle('en-lang');
+        localStorage.setItem('lang', isEn ? 'en' : 'ar');
         location.reload();
     }
 
-    function sendWA(msg) {
+    function sendWA(context) {
         const phone = "9647835535363";
-        let finalMsg = document.body.classList.contains('en-lang') 
-            ? `Hello, I want to start with: ${msg}`
-            : `مرحباً، أريد البدء بـ: ${msg}`;
-        window.open(`https://wa.me/${phone}?text=${encodeURIComponent(finalMsg)}`, '_blank');
+        const isEn = document.body.classList.contains('en-lang');
+        const msg = isEn ? `Hello Next Step, I want to start with: ${context}` : `مرحباً نكست ستيب، أود البدء بـ: ${context}`;
+        window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
     }
 
-    // 2. حركات الظهور الانسيابية
-    ScrollReveal().reveal('.step-item', { delay: 200, distance: '40px', origin: 'bottom', interval: 150 });
+    // 2. حركات الظهور للتايم لاين
+    ScrollReveal().reveal('.step-item', { delay: 300, distance: '50px', origin: 'bottom', interval: 200 });
 </script>
 
 </body>
