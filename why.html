@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لماذا نحن؟ | Next Step Elite</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* التنسيقات الفاخرة الموحدة (ثيم 4.2) */
+        :root {
+            --primary: #002347; --accent: #FF6F61; --bg: #F8F9FA; --card: #FFFFFF;
+            --text: #1A1A1A; --text-dim: #555555; --border: rgba(0,0,0,0.08);
+            --shadow: 0 15px 35px rgba(0,0,0,0.06); --radius: 25px;
+        }
+
+        body.dark-mode {
+            --primary: #8AB4F8; --bg: #0D1117; --card: #161B22;
+            --text: #E6EDF3; --text-dim: #8B949E; --border: rgba(255,255,255,0.1);
+        }
+
+        * { box-sizing: border-box; scroll-behavior: smooth; }
+        body { margin: 0; font-family: 'Tajawal', sans-serif; background: var(--bg); color: var(--text); direction: rtl; transition: 0.5s; overflow-x: hidden; }
+        body.en-lang { direction: ltr; font-family: 'Inter', sans-serif; }
+        .container { width: 92%; max-width: 1100px; margin: auto; }
+
+        /* الهيدر الزجاجي */
+        header { 
+            background: rgba(var(--card), 0.7); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            padding: 12px 0; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--border);
+        }
+        .nav-box { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
+        nav { display: flex; gap: 8px; }
+        nav a { 
+            text-decoration: none; color: var(--text); font-weight: 700; font-size: 0.85rem; 
+            padding: 10px 16px; border-radius: 12px; background: rgba(0,0,0,0.04); transition: 0.3s;
+        }
+        nav a:hover { background: var(--accent); color: white !important; }
+
+        /* بنر الصفحة التكنولوجي */
+        .why-banner {
+            padding: 100px 0; text-align: center; position: relative;
+            background: linear-gradient(135deg, rgba(0,35,71,0.95), rgba(255,111,97,0.4)), url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1920') center/cover;
+            color: white; border-radius: 0 0 60px 60px; overflow: hidden;
+        }
+
+        /* بطاقات المميزات التكنولوجية */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; padding: 60px 0; }
+        
+        .tech-card {
+            background: var(--card); border-radius: var(--radius); padding: 40px 30px; text-align: center;
+            border: 1px solid var(--border); box-shadow: var(--shadow); transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+        .tech-card:hover { transform: translateY(-15px); border-color: var(--accent); box-shadow: 0 20px 40px rgba(255,111,97,0.15); }
+        
+        .icon-box {
+            width: 80px; height: 80px; background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white; border-radius: 22px; display: flex; align-items: center; justify-content: center;
+            font-size: 32px; margin: 0 auto 25px; transition: 0.4s;
+        }
+        .tech-card:hover .icon-box { transform: rotateY(180deg); box-shadow: 0 0 20px var(--accent); }
+
+        /* قسم الرؤية (Vision Section) */
+        .vision-box {
+            background: var(--primary); color: white; padding: 60px; border-radius: 40px;
+            text-align: center; margin: 40px 0 80px 0; position: relative; overflow: hidden;
+        }
+        .vision-box i.bg-icon { position: absolute; right: -50px; bottom: -50px; font-size: 250px; opacity: 0.05; transform: rotate(-15deg); }
+
+        .cta-button { 
+            background: var(--accent); color: white; padding: 15px 45px; border-radius: 50px; 
+            border: none; font-weight: 800; cursor: pointer; text-decoration: none; display: inline-block;
+        }
+
+        /* لغات */
+        .lang-en { display: none; }
+        body.en-lang .lang-en { display: inline-block; }
+        body.en-lang .lang-ar { display: none; }
+
+        .whatsapp-float {
+            position: fixed; bottom: 30px; left: 30px; background: #25d366; color: white;
+            width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center;
+            justify-content: center; font-size: 30px; z-index: 1000; box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <div class="nav-box">
+            <h1 style="margin:0; font-size: 1.4rem; color: var(--primary); font-weight: 900;">Next Step</h1>
+            <nav>
+                <a href="index.html"><i class="fas fa-home"></i> <span class="lang-ar">الرئيسية</span><span class="lang-en">Home</span></a>
+                <a href="why.html" style="background: var(--accent); color: white;"><i class="fas fa-star"></i> <span class="lang-ar">لماذا نحن؟</span><span class="lang-en">Why Us?</span></a>
+                <div style="display:flex; gap:5px; margin-right: 10px;">
+                    <button onclick="toggleDarkMode()" style="border:none; background:var(--primary); color:white; cursor:pointer; padding:8px 12px; border-radius:10px;"><i class="fas fa-moon"></i></button>
+                    <button onclick="toggleLanguage()" style="border:none; background:var(--primary); color:white; cursor:pointer; padding:8px 12px; border-radius:10px; font-weight:bold;">EN/AR</button>
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<section class="why-banner">
+    <div class="container">
+        <h2 style="font-size: 2.8rem; font-weight: 900; margin-bottom: 20px;">
+            <span class="lang-ar">الريادة في التعليم الرقمي</span>
+            <span class="lang-en">Leaders in Digital Education</span>
+        </h2>
+        <p style="font-size: 1.2rem; max-width: 700px; margin: auto; opacity: 0.9;">
+            <span class="lang-ar">نحن نكسر الحواجز لنضع بين يديك مستقبلًا أكاديميًا مشرقًا بأحدث الوسائل التكنولوجية.</span>
+            <span class="lang-en">We break barriers to provide you with a bright academic future using the latest technology.</span>
+        </p>
+    </div>
+</section>
+
+<div class="container">
+    <div class="grid">
+        
+        <div class="tech-card">
+            <div class="icon-box"><i class="fas fa-microchip"></i></div>
+            <h3 style="color:var(--primary);"><span class="lang-ar">نظام متابعة ذكي</span><span class="lang-en">Smart Tracking</span></h3>
+            <p style="color:var(--text-dim); font-size: 0.95rem;">
+                <span class="lang-ar">نستخدم أنظمة رقمية لمتابعة طلبك مع الجامعات فورياً لضمان أسرع قبول ممكن.</span>
+                <span class="lang-en">We use digital systems to track your application with universities in real-time for fastest results.</span>
+            </p>
+        </div>
+
+        <div class="tech-card">
+            <div class="icon-box"><i class="fas fa-shield-alt"></i></div>
+            <h3 style="color:var(--primary);"><span class="lang-ar">اعتمادات رسمية</span><span class="lang-en">Official Accreditations</span></h3>
+            <p style="color:var(--text-dim); font-size: 0.95rem;">
+                <span class="lang-ar">كافة شراكاتنا مباشرة مع جامعات معترف بها من قبل وزارة التعليم العالي والبحث العلمي.</span>
+                <span class="lang-en">All our partnerships are direct with universities recognized by the Ministry of Higher Education.</span>
+            </p>
+        </div>
+
+        <div class="tech-card">
+            <div class="icon-box"><i class="fas fa-hand-holding-usd"></i></div>
+            <h3 style="color:var(--primary);"><span class="lang-ar">خصومات حصرية</span><span class="lang-en">Exclusive Discounts</span></h3>
+            <p style="color:var(--text-dim); font-size: 0.95rem;">
+                <span class="lang-ar">نقدم لطلابنا منحاً جزئية وخصومات تصل إلى 50% بفضل علاقاتنا المباشرة بالجامعات.</span>
+                <span class="lang-en">We provide partial scholarships and discounts up to 50% due to our direct university ties.</span>
+            </p>
+        </div>
+
+    </div>
+
+    <div class="vision-box">
+        <i class="fas fa-graduation-cap bg-icon"></i>
+        <h2 style="color: var(--accent); margin-bottom: 25px;"><span class="lang-ar">رؤيتنا 2026</span><span class="lang-en">Our Vision 2026</span></h2>
+        <p style="font-size: 1.1rem; line-height: 1.8; max-width: 800px; margin: auto; opacity: 0.9;">
+            <span class="lang-ar">أن نكون الجسر الرقمي الأول للطلاب العراقيين نحو العالمية، متمسكين بقيم الشفافية والاحترافية لتأمين مستقبل أجيالنا الصاعدة.</span>
+            <span class="lang-en">To be the primary digital bridge for Iraqi students toward global education, committed to transparency and professionalism.</span>
+        </p>
+        <div style="margin-top: 40px;">
+            <a href="javascript:void(0)" onclick="sendWA('الرؤية والخدمات')" class="cta-button" style="background: white; color: var(--primary);">
+                <span class="lang-ar">انضم إلى مجتمعنا الآن</span><span class="lang-en">Join Our Community Now</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<footer style="padding: 40px 0; text-align: center; background: var(--card); border-top: 1px solid var(--border);">
+    <div class="container">
+        <p style="font-size: 0.9rem; opacity: 0.7;">&copy; 2026 Next Step Education. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<a href="javascript:void(0)" onclick="sendWA('استفسار عن المميزات')" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
+
+<script src="https://unpkg.com/scrollreveal"></script>
+<script>
+    // 1. الإعدادات الذكية
+    (function init() {
+        if (localStorage.getItem('theme') === 'dark') document.body.classList.add('dark-mode');
+        if (localStorage.getItem('lang') === 'en') document.body.classList.add('en-lang');
+    })();
+
+    function toggleDarkMode() {
+        document.body.classList.toggle('dark-mode');
+        localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+    }
+
+    function toggleLanguage() {
+        document.body.classList.toggle('en-lang');
+        localStorage.setItem('lang', document.body.classList.contains('en-lang') ? 'en' : 'ar');
+        location.reload();
+    }
+
+    function sendWA(msg) {
+        const phone = "9647835535363";
+        let finalMsg = document.body.classList.contains('en-lang') 
+            ? `Hello, I'm interested in: ${msg}`
+            : `مرحباً، أنا مهتم بـ: ${msg}`;
+        window.open(`https://wa.me/${phone}?text=${encodeURIComponent(finalMsg)}`, '_blank');
+    }
+
+    // 2. حركات الظهور
+    ScrollReveal().reveal('.tech-card', { delay: 200, scale: 0.9, interval: 150 });
+    ScrollReveal().reveal('.vision-box', { delay: 400, origin: 'bottom', distance: '30px' });
+</script>
+
+</body>
+</html>
